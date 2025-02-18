@@ -31,3 +31,23 @@ def test_empty_required_fields_error(driver):
     # 3. Verify error message
     error_message = checkout_page.get_error_message()
     assert "First Name is required" in error_message, f"Expected 'First Name is required' but got '{error_message}'"
+
+def test_remove_item_from_cart(driver):
+    # 1. Login and add a product to the cart
+    login_page = LoginPage(driver)
+    login_page.click_standard_user()
+    login_page.tap_login_button()
+
+    products_page = ProductsPage(driver)
+    products_page.add_product_to_cart("Sauce Labs Backpack")
+
+    # 2. Open the cart and remove the product
+    cart_page = CartPage(driver)
+    cart_page.tap_cart_icon()
+    cart_page.remove_item("Sauce Labs Backpack")
+
+    # 3. Verify that the product is no longer in the cart
+    # Expect a TimeoutException when trying to locate the removed product
+    import pytest
+    with pytest.raises(Exception):
+        cart_page.get_product_item("Sauce Labs Backpack")

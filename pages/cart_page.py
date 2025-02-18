@@ -2,7 +2,6 @@ from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from appium.webdriver.common.appiumby import AppiumBy
 
-
 class CartPage(BasePage):
     CART_ITEM_NAME = (By.ID, "test-cart-item-name")
     CHECKOUT_BUTTON = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("CHECKOUT")')
