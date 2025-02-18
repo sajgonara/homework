@@ -10,7 +10,7 @@ class CartPage(BasePage):
     CART_ICON = (AppiumBy.ACCESSIBILITY_ID, "test-Cart")
 
     def get_product_item(self, product_name: str):
-        locator = self.build_xpath_by_text(product_name)
+        locator = (By.XPATH, f"//android.widget.TextView[contains(@text, '{product_name}')]")
         return self.find(locator)
 
     def tap_cart_icon(self):
@@ -21,3 +21,10 @@ class CartPage(BasePage):
 
     def checkout(self):
         self.click(self.CHECKOUT_BUTTON)
+
+    def continue_shopping(self):
+        self.click(self.CONTINUE_SHOPPING_BUTTON)
+
+    def remove_item(self, product_name: str):
+        locator = (By.XPATH, f"//android.widget.TextView[contains(@text, '{product_name}')]/following::*[@text='REMOVE'][1]")
+        self.click(locator)

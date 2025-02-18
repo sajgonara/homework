@@ -8,6 +8,7 @@ class DriverManager:
     @classmethod
     def start_driver(cls):
         options = UiAutomator2Options()
+        options.set_capability("fullReset", True)
         options.platform_name = Config.PLATFORM
         options.platform_version = Config.PLATFORM_VERSION
         options.device_name = Config.DEVICE_NAME

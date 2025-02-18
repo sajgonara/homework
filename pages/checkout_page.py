@@ -1,4 +1,6 @@
 from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.common.by import By
+
 from pages.base_page import BasePage
 
 class CheckoutPage(BasePage):
@@ -9,6 +11,7 @@ class CheckoutPage(BasePage):
     PAYMENT_INFO_FIELD = (AppiumBy.ACCESSIBILITY_ID, "test-Payment Info")
     FINISH_BUTTON = (AppiumBy.ACCESSIBILITY_ID, "test-FINISH")
     THANK_YOU_TEXT = (AppiumBy.XPATH, "//*[@text='THANK YOU FOR YOU ORDER']")
+    ERROR_MESSAGE = (AppiumBy.ACCESSIBILITY_ID, "test-Error message")
 
     def fill_personal_data(self, first_name: str, last_name: str, postal_code: str):
         self.send_keys(self.FIRST_NAME_FIELD, first_name)
@@ -24,3 +27,12 @@ class CheckoutPage(BasePage):
     def get_thank_you_message(self):
         element = self.find(self.THANK_YOU_TEXT, timeout=10)
         return element.text
+
+    def get_error_message(self):
+        child_locator = (
+            By.XPATH,
+            "//android.view.ViewGroup[@content-desc='test-Error message']/android.widget.TextView"
+        )
+        element = self.find(child_locator, timeout=10)
+        return element.text
+

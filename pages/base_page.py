@@ -3,12 +3,11 @@ from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from helpers.logger import setup_logger  # Make sure this exists
+from helpers.logger import setup_logger
 
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
-        # Initialize a logger specific to the page class
         self.logger = setup_logger(self.__class__.__name__)
 
     def find(self, locator, timeout=10):
