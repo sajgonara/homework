@@ -2,6 +2,8 @@
 
 This repository contains a simple test automation framework for a native mobile application. It uses **Appium 2.15.0** and **pytest**.
 
+I haven't used any ready framework. It's done from scratch.
+
 ## Requirements
 
 - Appium 2.15.0
