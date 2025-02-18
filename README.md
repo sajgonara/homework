@@ -37,7 +37,7 @@ This repository contains a simple test automation framework for a native mobile 
    ```bash 
    appium
 
-2. **Run the tests:**
+2. **Run the tests ( if you want the see full logger functionality run without -q flag ):**
    ```bash 
    pytest --maxfail=1 --disable-warnings -q
 
